@@ -1,5 +1,6 @@
 package com.test.qa.test;
 
+import com.test.qa.testdata.UserDetailsDataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -11,7 +12,7 @@ import com.test.qa.pageobjects.pages.HomePage;
 import com.test.qa.pageobjects.pages.LoginPage;
 import com.test.qa.pageobjects.pages.LoginSecurePage;
 import com.test.qa.pageobjects.utils.Constants;
-import com.test.qa.testdata.UserDetailsDataProvider;
+//import com.test.qa.testdata.UserDetailsDataProvider;
 import com.test.qa.utils.TestBase;
 
 /**
@@ -176,9 +177,10 @@ public class UiAutomationTrainingBasicTest extends TestBase {
 	/**
 	 * Verify Login Invalid Scenario
 	 */
-	@Test(groups = "test", priority = 7)
+	@Test(groups = { "test", "regression"}, priority = 7, dataProvider = "MultipleUserDetails", dataProviderClass = UserDetailsDataProvider.class)
 	public void testVerifyInvalidLogin(String username, String password) {
-        //Todo - Verify HomePage is displayed
+
+		//Todo - Verify HomePage is displayed
         //Todo - Click Login Link
         //Todo - Set Invalid Username and Password
         //Todo - Click Submit

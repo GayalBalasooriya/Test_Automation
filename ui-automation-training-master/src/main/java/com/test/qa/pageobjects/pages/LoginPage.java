@@ -11,35 +11,35 @@ import com.test.qa.pageobjects.utils.PageBase;
  */
 public class LoginPage extends PageBase {
 
+	private static final Logger LOGGER = Logger.getLogger(CheckBoxPage.class);
+
+	private static By hdrLoginPage = By.xpath("//h2[text()='Login Page']");
+	private static By txtUsername = By.id("username");
+	private static By txtPassword = By.id("password");
+	private static By btnSubmit = By.xpath("//button[@type='submit']");
+	private static By alertMessage=By.xpath("//div[@id='flash']");
+
 	public static boolean isLoginPageDisplayed() {
-		return false;
-	}
-
-	public static void setUsernamePassword(String userName, String password) {
-	}
-
-	public static void clickSubmit() {
-	}
-
-	public static boolean isAlertDisplayed() {
-		return false;
-	}
-
-	public static String getAlertContent() {
-		return null;
-	}
-
-	public static void setPassword(String password) {
+		return getDriver().findElement(hdrLoginPage).isDisplayed();
 	}
 
 	public static void setUsername(String username) {
+		getDriver().findElement(txtUsername).sendKeys(username);
+	}
+
+	public static void setPassword(String password) {
+		getDriver().findElement(txtPassword).sendKeys(password);
+	}
+
+	public static void clickSubmit() {
+		getDriver().findElement(btnSubmit).click();
 	}
 
 	public static String getLoginAlertMessage() {
-		return null;
+		return getDriver().findElement(alertMessage).getText();
 	}
 
 	public static boolean isLoginAlertDisplayed() {
-		return false;
+		return getDriver().findElement(alertMessage).isDisplayed();
 	}
 }

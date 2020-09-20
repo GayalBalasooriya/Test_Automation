@@ -11,26 +11,25 @@ import com.test.qa.pageobjects.utils.PageBase;
  */
 public class LoginSecurePage extends PageBase {
 
+	private static final Logger LOGGER = Logger.getLogger(LoginSecurePage.class);
+
+	private static By hdrLoginSecurePage = By.xpath("//h2[text()=' Secure Area']");
+	private static By btnLogout=By.xpath("//a[@href='/logout']");
+	private static By alertMessage=By.xpath("//div[@id='flash']");
+
 	public static boolean isLoginSecurePageDisplayed() {
-		return false;
-	}
-
-	public static String getAlertContent() {
-		return null;
-	}
-
-	public static boolean isAlertDisplayed() {
-		return false;
-	}
-
-	public static void clickLogout() {
+		return getDriver().findElement(hdrLoginSecurePage).isDisplayed();
 	}
 
 	public static boolean isLoginAlertDisplayed() {
-		return false;
+		return getDriver().findElement(alertMessage).isDisplayed();
 	}
 
 	public static String getLoginAlertMessage() {
-		return null;
+		return getDriver().findElement(alertMessage).getText();
+	}
+
+	public static void clickLogout(){
+		getDriver().findElement(btnLogout).click();
 	}
 }
